@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KonuYorumCore.DataAccess.Konu>
+
+@{
+    ViewData["Title"] = "Konu";
+}
+
+@if(TempData["Mesaj"] != null)
+{
+    @TempData["Mesaj"].ToString()
+}
+
+<h1>Gündem</h1>
+
+<p>
+    <a style = "color:black" asp-action="Create">Yeni Konu Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="color:whitesmoke; style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th style="color:whitesmoke; style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style = "font-weight:900">
+                @Html.DisplayFor(modelItem => item.Baslik)
+            </td>
+            <td style = "font-weight:900">
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+                <a style="color:red; font-weight:900" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a style="color:blue; font-weight:900" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a style="color:green; font-weight:900" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

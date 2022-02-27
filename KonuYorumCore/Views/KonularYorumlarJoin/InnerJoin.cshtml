@@ -1,0 +1,66 @@
+﻿@*@model IEnumerable<KonuYorumCore.DataAccess.Konu>*@
+    @model IEnumerable<KonuYorumCore.Models.KonuYorumInnerJoinModel>
+
+@{
+    ViewData["Title"] = "InnerJoin";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@*<p>
+    <a asp-action="Create">Yeni Oluştur</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Icerik)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Yorumcu)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Puan)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.PuanDurumu)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr >
+                <td style = "font-weight:900">
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+                <td style = "font-weight:900" >
+                    @Html.DisplayFor(modelItem => item.Aciklama)
+                </td>
+                <td style = "font-weight:900">
+                    @Html.DisplayFor(modelItem => item.Icerik)
+                </td>
+                <td style = "font-weight:900">
+                    @Html.DisplayFor(modelItem => item.Yorumcu)
+                </td>
+                <td style = "font-weight:900">
+                    @Html.DisplayFor(modelItem => item.Puan)
+                </td>
+                <td style = "font-weight:900">
+                    @Html.DisplayFor(modelItem => item.PuanDurumu)
+                </td>
+                <td>
+                    @*<a style = "color:red"asp-action="Details" asp-route-id="@item.Id">Details</a>&nbsp;|&nbsp;
+                        <a style = "color:blue" asp-action="Edit" asp-route-id="@item.Id">Edit</a>&nbsp;|&nbsp;
+                        <a style = "color:lightcyan" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

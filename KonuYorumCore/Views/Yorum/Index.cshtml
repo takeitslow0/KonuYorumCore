@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KonuYorumCore.DataAccess.Yorum>
+
+@{
+    ViewData["Title"] = "Yorum";
+}
+@if (TempData["YorumMesaj"] != null)
+{
+ <b>   @TempData["YorumMesaj"]</b>
+}
+
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Yeni Yorum Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Icerik)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Yorumcu)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Puan)
+            </th>
+            <th style = "font-weight:900">
+                @Html.DisplayNameFor(model => model.Konu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style = "font-weight:900">
+                @Html.DisplayFor(modelItem => item.Icerik)
+            </td>
+            <td style = "font-weight:900">
+                @Html.DisplayFor(modelItem => item.Yorumcu)
+            </td>
+            <td style = "font-weight:900">
+                @Html.DisplayFor(modelItem => item.Puan)
+            </td>
+            <td style = "font-weight:900">
+                @Html.DisplayFor(modelItem => item.Konu.Baslik)
+            </td>
+            <td style = "font-weight:900">
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
